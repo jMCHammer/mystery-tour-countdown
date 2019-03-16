@@ -6,8 +6,10 @@ import './App.css';
 class App extends Component {
   render() {
     var TEN_SEC = 10000;
-    console.log("HEY! " +  process.env.TRIP_DATE);
-    var endDate = process.env.TRIP_DATE ;
+    var endDate = new Date(new Date().getTime() + TEN_SEC).toString();
+    if (process.env.NODE_ENV === "production") {
+        endDate = "Aug 22 2020 23:59:59 GMT-0400";
+    }
 
         return (
       <div className="App">
