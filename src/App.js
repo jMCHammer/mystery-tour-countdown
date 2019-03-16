@@ -6,7 +6,8 @@ import './App.css';
 class App extends Component {
   render() {
     var TEN_SEC = 10000;
-    var endDate = process.env.TRIP_DATE || new Date(new Date().getTime() + TEN_SEC).toString();
+    console.log("HEY! " +  process.env.TRIP_DATE);
+    var endDate = process.env.TRIP_DATE ;
 
         return (
       <div className="App">
