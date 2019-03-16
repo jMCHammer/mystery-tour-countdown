@@ -5,8 +5,10 @@ import './App.css';
 
 class App extends Component {
   render() {
-    var endDate = new Date(new Date().getTime() + 30000);
-    return (
+    var TEN_SEC = 10000;
+    var endDate = process.env.TRIP_DATE || new Date(new Date().getTime() + TEN_SEC).toString();
+
+        return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
