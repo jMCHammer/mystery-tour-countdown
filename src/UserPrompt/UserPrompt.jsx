@@ -9,20 +9,19 @@ function signin(e, setter, passphrases) {
     setter(passphrases[0][text]);
   }
 }
+async function fetchData(setter) {
+  const res = await fetch("https://mystery-backend.herokuapp.com/people");
+  res
+    .json()
+    .then(res => setter(res))
+    .catch(() => console.log("Couldn't find users"));
+}
 
 function UserPrompt(props) {
   const [passphrases, setPassphrases] = useState([{}]);
 
-  async function fetchData() {
-    const res = await fetch("https://mystery-backend.herokuapp.com/people");
-    res
-      .json()
-      .then(res => setPassphrases(res))
-      .catch(() => console.log("Couldn't find users"));
-  }
-
   useEffect(() => {
-    fetchData();
+    fetchData(setPassphrases);
   });
   // todo store user in local storage?
   if (props.user != null) {
