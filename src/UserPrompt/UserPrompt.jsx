@@ -22,7 +22,7 @@ function UserPrompt(props) {
 
   useEffect(() => {
     fetchData(setPassphrases);
-  });
+  }, []);
   // todo store user in local storage?
   if (props.user != null) {
     return null;
