@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import "./styles.scss";
+import "bootstrap/scss/bootstrap.scss";
 
 function signin(e, setter) {
   var name = e;
@@ -19,17 +20,29 @@ async function fetchData(setter, name) {
 
 function UserPrompt(props) {
   // todo store user in local storage?
+  const [fade, setFade] = useState("fadeMeIn");
   const [val, setVal] = useState();
   if (props.user != null) {
     return null;
   }
   return (
-    <div>
-      <input
-        onChange={e => setVal(e.target.value)}
-        placeholder="Enter your name"
-      />
-      <button onClick={() => signin(val, props.setUser)}>Sign in</button>
+    <div className="container">
+      <div className={fade} className="input-group mb-3">
+        <input
+          className="form-control"
+          onChange={e => setVal(e.target.value)}
+          placeholder="Enter your name"
+        />
+        <button
+          className="btn btn-outline-secondary btn-light"
+          type="button"
+          onClick={() => {
+            signin(val, props.setUser);
+          }}
+        >
+          Sign in
+        </button>
+      </div>
     </div>
   );
 }
