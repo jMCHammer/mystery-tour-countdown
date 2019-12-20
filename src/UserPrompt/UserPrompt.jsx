@@ -13,7 +13,7 @@ async function fetchData(setter, name) {
   );
   res
     .json()
-    .then(res => setter(res))
+    .then(res => setter(res[0]))
     .catch(() => console.log("Couldn't find user"));
 }
 
