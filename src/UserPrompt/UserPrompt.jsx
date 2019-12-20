@@ -2,27 +2,21 @@ import React, { useEffect, useState } from "react";
 
 import "./styles.scss";
 
-function signin(e, setter, passphrases) {
-  var text = e.target.value;
-  //todo fix
-  if (passphrases[0].hasOwnProperty(text)) {
-    setter(passphrases[0][text]);
-  }
+function signin(e, setter) {
+  var name = e.target.value;
+  fetchData(setter, name);
 }
-async function fetchData(setter) {
-  const res = await fetch("https://mystery-backend.herokuapp.com/people");
+async function fetchData(setter, name) {
+  const res = await fetch(
+    "https://mystery-backend.herokuapp.com/people?name=" + name
+  );
   res
     .json()
     .then(res => setter(res))
-    .catch(() => console.log("Couldn't find users"));
+    .catch(() => console.log("Couldn't find user"));
 }
 
 function UserPrompt(props) {
-  const [passphrases, setPassphrases] = useState([{}]);
-
-  useEffect(() => {
-    fetchData(setPassphrases);
-  }, []);
   // todo store user in local storage?
   if (props.user != null) {
     return null;
@@ -30,7 +24,7 @@ function UserPrompt(props) {
   return (
     <div>
       <input
-        onChange={e => signin(e, props.setUser, passphrases)}
+        onChange={e => signin(e, props.setUser)}
         placeholder="Enter your name"
       />
     </div>
