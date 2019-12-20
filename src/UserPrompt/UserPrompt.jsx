@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 
 import "./styles.scss";
-import "bootstrap/scss/bootstrap.scss";
 
 function signin(e, setter) {
   var name = e;
