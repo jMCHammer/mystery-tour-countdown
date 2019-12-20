@@ -25,7 +25,10 @@ function UserPrompt(props) {
   }
   return (
     <div>
-      <input onChange={setVal} placeholder="Enter your name" />
+      <input
+        onChange={e => setVal(e.target.value)}
+        placeholder="Enter your name"
+      />
       <button onClick={() => signin(val, props.setUser)}>Sign in</button>
     </div>
   );
