@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 import "./styles.scss";
 
 function signin(e, setter) {
-  var name = e.target.value;
+  var name = e;
+
   fetchData(setter, name);
 }
 async function fetchData(setter, name) {
@@ -18,15 +19,14 @@ async function fetchData(setter, name) {
 
 function UserPrompt(props) {
   // todo store user in local storage?
+  const [val, setVal] = useState();
   if (props.user != null) {
     return null;
   }
   return (
     <div>
-      <input
-        onChange={e => signin(e, props.setUser)}
-        placeholder="Enter your name"
-      />
+      <input onChange={setVal} placeholder="Enter your name" />
+      <button onClick={() => signin(val, props.setUser)}>Sign in</button>
     </div>
   );
 }
