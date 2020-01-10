@@ -3,7 +3,7 @@ import React, { useState, useContext } from "react";
 import Countdown from "../Countdown/Countdown";
 import Instruction from "../Instruction/Instruction";
 import UserContext from "../UserContext";
-
+import Proximity from "../Proximity/Proximity";
 const game = {
   countdown: {
     comp: Countdown,
@@ -31,10 +31,13 @@ function Player() {
   }
   if (user) {
     return (
-      <GameComponent.comp
-        endDate={GameComponent.endDate}
-        goToNext={goToNextPage}
-      />
+      <div>
+        <GameComponent.comp
+          endDate={GameComponent.endDate}
+          goToNext={goToNextPage}
+        />
+        <Proximity />;
+      </div>
     );
   }
   return null;

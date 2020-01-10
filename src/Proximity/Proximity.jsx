@@ -1,39 +1,51 @@
 import React, { useState } from "react";
 
-function Proximity() {
-  // const [location, setLocation] = useState({ lat: 0, lng: 0 });
-  // var map = new google.maps.Map(document.getElementById("map"), {
-  //   center: { lat: -34.397, lng: 150.644 },
-  //   zoom: 6
-  // });
-  // var infoWindow = new google.maps.InfoWindow();
-  // Try HTML5 geolocation.
-  if (navigator.geolocation) {
-    console.log("supports geolocation");
-    navigator.geolocation.getCurrentPosition(
-      function(position) {
-        console.log("getting location");
-        console.log(position.coords);
-        // var pos = {
-        //   lat: position.coords.latitude,
-        //   lng: position.coords.longitude
-        // };
+function degreesToRadians(degrees) {
+  return (degrees * Math.PI) / 180;
+}
 
-        // infoWindow.setPosition(pos);
-        // infoWindow.setContent("Location found.");
-        // infoWindow.open(map);
-        // map.setCenter(pos);
-      },
-      function() {
-        // handleLocationError(true, infoWindow, map.getCenter());
-        console.log("Failed 2");
-      }
-    );
+function distanceInMetersBetweenEarthCoordinates(position1, position2) {
+  var lat1 = position1[0];
+  var lon1 = position1[1];
+  var lat2 = position2[0];
+  var lon2 = position2[1];
+
+  var earthRadiusM = 6371000;
+
+  var dLat = degreesToRadians(lat2 - lat1);
+  var dLon = degreesToRadians(lon2 - lon1);
+
+  lat1 = degreesToRadians(lat1);
+  lat2 = degreesToRadians(lat2);
+
+  var a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2);
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  return earthRadiusM * c;
+}
+
+function Proximity() {
+  //todo: get a location from the server
+  // this is roughly Dilworth Park
+  const [location, setLocation] = useState([39.95306, -75.164527]);
+  const [position, setPosition] = useState([null, null]);
+
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
   } else {
-    // Browser doesn't support Geolocation
-    console.log("Failed");
+    console.log("Geolocation is not supported by this browser.");
   }
-  return <div />;
+
+  function showPosition(position) {
+    setPosition([position.coords.latitude, position.coords.longitude]);
+  }
+
+  var distanceInMeters = distanceInMetersBetweenEarthCoordinates(
+    position,
+    location
+  );
+  return <div>You are {distanceInMeters} meters from your destination.</div>;
 }
 
 export default Proximity;
