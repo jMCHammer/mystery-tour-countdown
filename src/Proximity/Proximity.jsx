@@ -27,7 +27,7 @@ function distanceBetweenPositions(position1, position2) {
 
 async function fetchData(setter) {
   const res = await fetch(
-    'https://mystery-backend.herokuapp.com/locations?name="Work"'
+    "https://mystery-backend.herokuapp.com/locations?name=Work"
   );
   res
     .json()
