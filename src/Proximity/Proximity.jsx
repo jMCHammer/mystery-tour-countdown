@@ -4,7 +4,7 @@ function degreesToRadians(degrees) {
   return (degrees * Math.PI) / 180;
 }
 
-function distanceInMetersBetweenEarthCoordinates(position1, position2) {
+function distanceBetweenPositions(position1, position2) {
   var lat1 = position1[0];
   var lon1 = position1[1];
   var lat2 = position2[0];
@@ -25,10 +25,21 @@ function distanceInMetersBetweenEarthCoordinates(position1, position2) {
   return earthRadiusM * c;
 }
 
+async function fetchData(setter) {
+  const res = await fetch(
+    'https://mystery-backend.herokuapp.com/locations?name="Work"'
+  );
+  res
+    .json()
+    .then(res => setter(res[0]))
+    .catch(() => console.log("Couldn't find user"));
+}
+
 function Proximity() {
   //todo: get a location from the server
   // this is roughly Dilworth Park
   const [location, setLocation] = useState([39.95306, -75.164527]);
+  fetchData(setLocation);
   const [position, setPosition] = useState([null, null]);
 
   if (navigator.geolocation) {
@@ -41,10 +52,7 @@ function Proximity() {
     setPosition([position.coords.latitude, position.coords.longitude]);
   }
 
-  var distanceInMeters = distanceInMetersBetweenEarthCoordinates(
-    position,
-    location
-  );
+  var distanceInMeters = distanceBetweenPositions(position, location);
   return <div>You are {distanceInMeters} meters from your destination.</div>;
 }
 
