@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+var nodeEnv = process.env.NODE_ENV;
+
 function degreesToRadians(degrees) {
   return (degrees * Math.PI) / 180;
 }
@@ -26,32 +28,39 @@ function distanceBetweenPositions(position1, position2) {
 }
 
 async function fetchData(setter) {
-  const res = await fetch(
-    "https://mystery-backend.herokuapp.com/locations?name=Work"
-  );
+  var url = "https://mystery-backend.herokuapp.com";
+  if (nodeEnv == "development") {
+    url = "http://localhost:8080";
+  }
+
+  const res = await fetch(url + "/locations?name=Work");
   res
     .json()
     .then(res => setter(res[0]))
-    .catch(() => console.log("Couldn't find user"));
+    .catch(() => console.log("Couldn't find locations"));
+}
+
+function calculatePosition(showPosition) {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    console.log("Geolocation is not supported by this browser.");
+  }
 }
 
 function Proximity() {
   //todo: get a location from the server
   // this is roughly Dilworth Park
   const [location, setLocation] = useState([39.95306, -75.164527]);
-  fetchData(setLocation);
+  //todo fix the location problem, nonstop location fetches
+  //fetchData(setLocation);
   const [position, setPosition] = useState([null, null]);
-
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  } else {
-    console.log("Geolocation is not supported by this browser.");
-  }
 
   function showPosition(position) {
     setPosition([position.coords.latitude, position.coords.longitude]);
   }
 
+  calculatePosition(showPosition);
   var distanceInMeters = distanceBetweenPositions(position, location);
   return <div>You are {distanceInMeters} meters from your destination.</div>;
 }

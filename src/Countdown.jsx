@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 
-import useInterval from "../interval.js";
+import useInterval from "./interval.js";
 
-import CountdownElement from "./CountdownElement/CountdownElement";
-
-import "./styles.scss";
+import "./Countdown.scss";
 
 function calculateCountdown(endDate) {
   let diff = (Date.parse(new Date(endDate)) - Date.parse(new Date())) / 1000;
@@ -82,6 +80,25 @@ function Countdown(props) {
         display={countDown.sec <= 1 ? "Second" : "Seconds"}
       />
     </div>
+  );
+}
+
+function addLeadingZeros(value) {
+  value = String(value);
+  while (value.length < 2) {
+    value = "0" + value;
+  }
+  return value;
+}
+
+function CountdownElement(props) {
+  return (
+    <span className="Countdown-col">
+      <span className="Countdown-col-element">
+        <strong>{addLeadingZeros(props.days)}</strong>
+        <span>{props.display}</span>
+      </span>
+    </span>
   );
 }
 

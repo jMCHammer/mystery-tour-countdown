@@ -2,8 +2,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 
-import UserPrompt from "./UserPrompt/UserPrompt";
-import Player from "./Player/Player";
+import UserPrompt from "./UserPrompt";
+import Player from "./Player";
 import UserContext from "./UserContext";
 import "./styles.css";
 

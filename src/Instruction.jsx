@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 
-import UserContext from "../UserContext";
-import useInterval from "../interval.js";
+import UserContext from "./UserContext";
+import useInterval from "./interval.js";
 
 function Instruction(props) {
   const [time, setTime] = useState(new Date().getTime());

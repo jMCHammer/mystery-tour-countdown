@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import "./styles.scss";
+var nodeEnv = process.env.NODE_ENV;
 
 function signin(e, setter) {
   var name = e;
@@ -8,9 +8,12 @@ function signin(e, setter) {
   fetchData(setter, name);
 }
 async function fetchData(setter, name) {
-  const res = await fetch(
-    "https://mystery-backend.herokuapp.com/people?name=" + name
-  );
+  var url = "https://mystery-backend.herokuapp.com";
+  if (nodeEnv == "development") {
+    url = "http://localhost:8080";
+  }
+
+  const res = await fetch(url + "/people?name=" + name);
   res
     .json()
     .then(res => setter(res[0]))
@@ -26,22 +29,25 @@ function UserPrompt(props) {
   }
   return (
     <div className="container">
-      <div className={fade} className="input-group mb-3">
+      <form
+        onSubmit={event => {
+          event.preventDefault();
+          signin(val, props.setUser);
+        }}
+        className={fade}
+        className="input-group mb-3"
+      >
         <input
           className="form-control"
           onChange={e => setVal(e.target.value)}
           placeholder="Enter your name"
         />
-        <button
+        <input
+          value="Sign in"
           className="btn btn-outline-secondary btn-light"
-          type="button"
-          onClick={() => {
-            signin(val, props.setUser);
-          }}
-        >
-          Sign in
-        </button>
-      </div>
+          type="submit"
+        ></input>
+      </form>
     </div>
   );
 }

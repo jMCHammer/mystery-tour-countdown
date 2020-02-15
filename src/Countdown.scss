@@ -1,48 +1,47 @@
-
-.Countdown{
+.Countdown {
   margin: 10px auto;
   padding-bottom: 20px;
 }
 
-.Countdown-col{
+.Countdown-col {
   display: inline-block;
 }
 
-.Countdown-col-element{
+.Countdown-col-element {
   display: inline-block;
   margin: 0 20px;
   display: flex;
   flex-direction: column;
 }
 
-.Countdown-col-element strong{
+.Countdown-col-element strong {
   font-size: 50px;
 }
 
 .fadeMeIn {
-  animation:fadeIn 1s linear;
+  animation: fadeIn 1s linear;
 }
 
 .fadeMeOut {
-  animation:fadeOut 1s linear;
+  animation: fadeOut 1s linear;
 }
 @keyframes fadeIn {
   0% {
-    opacity:0
+    opacity: 0;
   }
   100% {
-    opacity:1;
+    opacity: 1;
   }
 }
 @keyframes fadeOut {
   0% {
-    opacity:1
+    opacity: 1;
   }
   100% {
-    opacity:0;
+    opacity: 0;
   }
 }
 
 .fadeMe.none {
-  display:none
+  display: none;
 }

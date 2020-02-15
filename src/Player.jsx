@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
 
-import Countdown from "../Countdown/Countdown";
-import Instruction from "../Instruction/Instruction";
-import UserContext from "../UserContext";
-import Proximity from "../Proximity/Proximity";
+import Countdown from "./Countdown";
+import Instruction from "./Instruction";
+import UserContext from "./UserContext";
+import Proximity from "./Proximity";
 const game = {
   countdown: {
     comp: Countdown,
@@ -36,7 +36,7 @@ function Player() {
           endDate={GameComponent.endDate}
           goToNext={goToNextPage}
         />
-        <Proximity />;
+        <Proximity />
       </div>
     );
   }
