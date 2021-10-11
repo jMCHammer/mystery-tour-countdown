@@ -5,7 +5,8 @@ var nodeEnv = process.env.NODE_ENV;
 function signin(e, setter) {
   var name = e;
 
-  fetchData(setter, name);
+  //fetchData(setter, name);
+  setter(name);
 }
 async function fetchData(setter, name) {
   var url = "https://mystery-backend.herokuapp.com";
