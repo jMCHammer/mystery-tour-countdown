@@ -7,7 +7,9 @@ import Proximity from "./Proximity";
 const game = {
   countdown: {
     comp: Countdown,
-    endDate: new Date(new Date("June 13 2020"))
+    endDate: new Date(
+      new Date("November 5 2021 00:00:00 GMT-0400 (Eastern Daylight Time)")
+    )
   },
   Hello: {
     comp: Instruction,
