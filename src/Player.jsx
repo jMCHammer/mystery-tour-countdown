@@ -31,18 +31,17 @@ function Player() {
       setComponentKey("Hello");
     }
   }
-  if (user) {
-    return (
-      <div>
-        <GameComponent.comp
-          endDate={GameComponent.endDate}
-          goToNext={goToNextPage}
-        />
-        <Proximity />
-      </div>
-    );
-  }
-  return null;
+  // if (user) {
+  return (
+    <div>
+      <GameComponent.comp
+        endDate={GameComponent.endDate}
+        goToNext={goToNextPage}
+      />
+    </div>
+  );
+  // }
+  // return null;
 }
 
 export default Player;

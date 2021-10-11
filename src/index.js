@@ -13,10 +13,7 @@ function App() {
   return (
     <div className="App">
       <div className="App-header">
-        <UserContext.Provider value={user}>
-          <UserPrompt user={user} setUser={setUser} />
-          <Player />
-        </UserContext.Provider>
+        <Player />
       </div>
     </div>
   );
