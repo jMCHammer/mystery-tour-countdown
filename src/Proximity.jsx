@@ -48,12 +48,11 @@ function calculatePosition(showPosition) {
   }
 }
 
-function Proximity() {
+function Proximity(props) {
   //todo: get a location from the server
-  // this is roughly Dilworth Park
-  const [location, setLocation] = useState([39.95306, -75.164527]);
-  //todo fix the location problem, nonstop location fetches
-  //fetchData(setLocation);
+  // south side of Roberts Pool
+  const [location, setLocation] = useState([39.921916, -75.075628]);
+
   const [position, setPosition] = useState([null, null]);
 
   function showPosition(position) {
