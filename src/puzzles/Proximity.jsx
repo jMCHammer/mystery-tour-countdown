@@ -7,7 +7,13 @@ function degreesToRadians(degrees) {
 }
 function relativeDistance(position1, position2) {
   var meters = distanceBetweenPositions(position1, position2);
-  return meters > 100 ? "far" : meters > 50 ? "getting close" : "very close";
+  return meters > 100
+    ? "far"
+    : meters > 30
+    ? "getting close"
+    : meters > 5
+    ? "very close"
+    : "there! You're at ";
 }
 
 function distanceBetweenPositions(position1, position2) {
