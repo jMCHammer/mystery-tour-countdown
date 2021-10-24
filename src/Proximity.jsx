@@ -40,9 +40,9 @@ async function fetchData(setter) {
     .catch(() => console.log("Couldn't find locations"));
 }
 
-function calculatePosition(showPosition) {
+function calculatePosition(f) {
   if (navigator.geolocation) {
-    navigator.geolocation.watchPosition(showPosition);
+    navigator.geolocation.watchPosition(f);
   } else {
     alert("Geolocation is not supported by this browser.");
   }
@@ -53,22 +53,18 @@ function Proximity(props) {
   // south side of Roberts Pool
   const [location, setLocation] = useState([39.921916, -75.075628]);
 
-  const [position, setPosition] = useState([null, null]);
+  const [position, setPosition] = useState([39.921916, -75.075628]);
 
-  function showPosition(position) {
-    setPosition([position.coords.latitude, position.coords.longitude]);
+  function showPosition(p) {
+    setPosition([p.coords.latitude, p.coords.longitude]);
   }
 
   calculatePosition(showPosition);
   var distanceInMeters = distanceBetweenPositions(position, location);
   return (
     <div>
-      You are {distanceInMeters} meters from your destination.
-      <br />
-      Latitude:
-      {position.coords.latitude}
-      <br />
-      Longitude: {position.coords.longitude}
+      You are {distanceInMeters} meters from your destination. Position:
+      {position}
     </div>
   );
 }
