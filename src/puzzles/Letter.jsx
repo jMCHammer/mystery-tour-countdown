@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 var prompt =
-  "Psst! Spies! They're listening to us... I sent you an encoded hint to our next meeting place!";
+  "Psst! Spies! They're listening to us... I sent you an encoded hint to our next meeting place";
 var answers = ["Marist", "Marist College", "Marist University"];
 
 function Letter(props) {
@@ -39,7 +39,7 @@ function Letter(props) {
         <input type="submit" value="Submit" />
       </form>
       <form hidden={!solved} onSubmit={handleNext}>
-        Meet me at the hidden location for your next clue!
+        Meet me at the location for your next clue!
         <input value="Next" type="submit" />
       </form>
     </div>

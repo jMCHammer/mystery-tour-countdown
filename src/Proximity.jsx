@@ -61,7 +61,16 @@ function Proximity(props) {
 
   calculatePosition(showPosition);
   var distanceInMeters = distanceBetweenPositions(position, location);
-  return <div>You are {distanceInMeters} meters from your destination.</div>;
+  return (
+    <div>
+      You are {distanceInMeters} meters from your destination.
+      <br />
+      Latitude:
+      {position.coords.latitude}
+      <br />
+      Longitude: {position.coords.longitude}
+    </div>
+  );
 }
 
 export default Proximity;
