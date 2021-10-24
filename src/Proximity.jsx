@@ -42,9 +42,9 @@ async function fetchData(setter) {
 
 function calculatePosition(showPosition) {
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
+    navigator.geolocation.watchPosition(showPosition);
   } else {
-    console.log("Geolocation is not supported by this browser.");
+    alert("Geolocation is not supported by this browser.");
   }
 }
 
