@@ -4,8 +4,9 @@ import ReactDOM from "react-dom";
 
 import UserPrompt from "./UserPrompt";
 import Player from "./Player";
-import Proximity from "./Proximity";
+import Proximity from "./puzzles/Proximity";
 import Letter from "./puzzles/Letter";
+import Library from "./puzzles/Library";
 import UserContext from "./UserContext";
 import "./styles.css";
 
@@ -37,7 +38,7 @@ function App() {
   return (
     <div className="App">
       <div className="App-header">
-        <Proximity />
+        <Library />
       </div>
     </div>
   );

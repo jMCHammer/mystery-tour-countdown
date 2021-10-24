@@ -3,7 +3,7 @@ import React, { useState, useContext } from "react";
 import Countdown from "./Countdown";
 import Instruction from "./Instruction";
 import UserContext from "./UserContext";
-import Proximity from "./Proximity";
+import Proximity from "./puzzles/Proximity";
 const game = {
   countdown: {
     comp: Countdown,

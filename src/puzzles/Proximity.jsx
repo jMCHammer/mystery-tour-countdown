@@ -5,6 +5,10 @@ var nodeEnv = process.env.NODE_ENV;
 function degreesToRadians(degrees) {
   return (degrees * Math.PI) / 180;
 }
+function relativeDistance(position1, position2) {
+  var meters = distanceBetweenPositions(position1, position2);
+  return meters > 100 ? "far" : meters > 50 ? "getting close" : "very close";
+}
 
 function distanceBetweenPositions(position1, position2) {
   var lat1 = position1[0];
@@ -49,10 +53,6 @@ function calculatePosition(f) {
 }
 
 function Proximity(props) {
-  //todo: get a location from the server
-  // south side of Roberts Pool
-  const [location, setLocation] = useState([39.921916, -75.075628]);
-
   const [position, setPosition] = useState([39.921916, -75.075628]);
 
   function showPosition(p) {
@@ -60,13 +60,8 @@ function Proximity(props) {
   }
 
   calculatePosition(showPosition);
-  var distanceInMeters = distanceBetweenPositions(position, location);
-  return (
-    <div>
-      You are {distanceInMeters} meters from your destination. Position:
-      {position}
-    </div>
-  );
+  var distance = relativeDistance(position, props.location);
+  return <div>You are {distance} from your destination.</div>;
 }
 
 export default Proximity;
