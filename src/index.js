@@ -2,7 +2,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 
-import UserPrompt from "./UserPrompt";
 import Player from "./Player";
 import Proximity from "./puzzles/Proximity";
 import Letter from "./puzzles/Letter";
@@ -38,7 +37,7 @@ function App() {
   return (
     <div className="App">
       <div className="App-header">
-        <Library />
+        <Player />
       </div>
     </div>
   );

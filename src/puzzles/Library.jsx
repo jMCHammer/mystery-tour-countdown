@@ -6,7 +6,7 @@ var prompt =
 
 function Library(props) {
   // Wisdom statue near Marist Library
-  //const location = [39.921916, -75.075628];
+  //const location = [41.721883, -73.933583];
 
   // Roberts Pool
   const location = [39.921916, -75.075628];
