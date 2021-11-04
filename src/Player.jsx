@@ -13,7 +13,7 @@ const game = {
     comp: Countdown,
     endDate: new Date(
       // new Date("November 5 2021 00:00:00 GMT-0400 (Eastern Daylight Time)")
-      new Date("November 4 2021 20:00:00 GMT-0400 (Eastern Daylight Time)")
+      new Date("November 4 2021 21:00:00 GMT-0400 (Eastern Daylight Time)")
     )
   },
   Hello: {
