@@ -1,33 +1,32 @@
 import React, { useState } from "react";
+import Proximity from "./Proximity";
 
 var prompt =
-  "Psst! Spies! They're listening to us... I sent you an encoded hint to our next meeting place";
-var answers = ["marist", "marist college", "marist university"];
+  "This institution is cleverly disguised. But their students are trained in more than one art. Not the FBI, but close...";
 
-function Letter(props) {
-  const [puzzle, setPuzzle] = useState(
-    "20 8 5; 3 1 13 16 21 19; 15 6; 18 5 4; 6 15 24 5 19;"
-  );
+var answers = ["cia", "culinary institute of america", "culinary institute"];
 
-  const [solved, setSolved] = useState(false);
+function CIA(props) {
+  const gps = [41.74694620150319, -73.93207740778101];
   const [location, setLocation] = useState("");
-  const handleNext = evt => {
-    evt.preventDefault();
-    props.handleDone();
-  };
+  const [solved, setSolved] = useState(false);
+
   const handleSubmit = evt => {
     evt.preventDefault();
     console.log("submitted");
     if (answers.includes(location.toLowerCase())) {
       console.log("true!");
       setSolved(true);
-      setPuzzle("The campus of Red Foxes");
     }
+  };
+  const handleNext = evt => {
+    evt.preventDefault();
+    console.log("next");
+    props.handleDone();
   };
   return (
     <div>
       <p>{prompt}</p>
-      <p>{puzzle}</p>
       <form hidden={solved} onSubmit={handleSubmit}>
         <label>
           Location:
@@ -40,10 +39,13 @@ function Letter(props) {
         <input type="submit" value="Submit" />
       </form>
       <form hidden={!solved} onSubmit={handleNext}>
-        Meet me at the location for your next clue!
+        Meet there for some food! Then continue on...
         <input value="Next" type="submit" />
+        <p>
+          <Proximity location={gps} />
+        </p>
       </form>
     </div>
   );
 }
-export default Letter;
+export default CIA;

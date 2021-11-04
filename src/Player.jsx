@@ -9,7 +9,7 @@ import Puzzle from "./Puzzle";
 import End from "./End";
 import Concert from "./Concert";
 const game = {
-  countdown: {
+  Countdown: {
     comp: Countdown,
     endDate: new Date(
       // new Date("November 5 2021 00:00:00 GMT-0400 (Eastern Daylight Time)")
@@ -47,18 +47,22 @@ const game = {
 
 function Player() {
   // todo set initial component based on current time
-  const [componentKey, setComponentKey] = useState("countdown");
+  const [componentKey, setComponentKey] = useState("Countdown");
   const user = useContext(UserContext);
 
   const GameComponent = game[componentKey];
-  const endDate = 10;
+
   function goToNextPage() {
-    if (componentKey === "countdown") {
+    if (componentKey === "Countdown") {
       setComponentKey("Hello");
     } else if (componentKey === "Hello") {
       setComponentKey("Wait");
     } else if (componentKey === "Wait") {
       setComponentKey("Puzzle");
+    } else if (componentKey === "Puzzle") {
+      setComponentKey("Concert");
+    } else if (componentKey === "Concert") {
+      setComponentKey("End");
     }
   }
   // if (user) {

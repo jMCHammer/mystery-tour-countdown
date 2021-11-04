@@ -1,14 +1,21 @@
+import React, { useContext, useState } from "react";
+
 var prompt =
   "Another secret member of your Spy society... Abraham Lincoln visited this location in Poughkeepsie twice. Once alive, once dead...";
-var answers = ["Amtrak"];
+var answers = ["amtrak"];
 
 function Amtrak(props) {
   const [solved, setSolved] = useState(false);
-
+  const [location, setLocation] = useState("");
+  const handleNext = evt => {
+    evt.preventDefault();
+    console.log("next");
+    props.handleDone();
+  };
   const handleSubmit = evt => {
     evt.preventDefault();
 
-    if (answers.includes(location)) {
+    if (answers.includes(location.toLowerCase())) {
       setSolved(true);
     }
   };
