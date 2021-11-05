@@ -24,9 +24,8 @@ function Instruction(props) {
   const className = !props.endDate.getTime() <= time ? "fadeMeIn" : "fadeMeOut";
   return (
     <div className={className}>
-      Hello Recruits! <br />
       <a href="https://elsevier.zoom.us/j/5072606808?pwd=Y1QvRWxUQWNzZW1sSFRvME04dzdzQT09">
-        Join through Zoom
+        Join for your first instruction!
       </a>
     </div>
   );
