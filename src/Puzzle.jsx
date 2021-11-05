@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 
 import useInterval from "./interval.js";
+import Start from "./puzzles/Start.jsx";
 import Letter from "./puzzles/Letter.jsx";
 import Library from "./puzzles/Library.jsx";
 import CIA from "./puzzles/CIA.jsx";
@@ -12,7 +13,7 @@ import End from "./puzzles/End.jsx";
 Letter -> Library -> CIA -> Amtrak -> Park -> Bridge
 Letter -> Amtrak -> Park -> Bridge -> Library -> CIA
 */
-var game = [Letter, Library, CIA, Amtrak, Park, Bridge, End];
+var game = [Start, Letter, Library, CIA, Amtrak, Park, Bridge, End];
 
 function Puzzle(props) {
   const [time, setTime] = useState(new Date().getTime());
