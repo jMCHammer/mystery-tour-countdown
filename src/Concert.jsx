@@ -2,11 +2,13 @@ import React, { useContext, useState } from "react";
 
 import UserContext from "./UserContext";
 import useInterval from "./interval.js";
+import Countdown from "./Countdown";
 
-function Instruction(props) {
+function Concert(props) {
   const [time, setTime] = useState(new Date().getTime());
   const [delay, setDelay] = useState(1000);
   const user = useContext(UserContext);
+  const endDate = new Date("Nov 06 2021 21:00:00 GMT-0400");
 
   useInterval(() => {
     var newTime = new Date().getTime();
@@ -24,11 +26,11 @@ function Instruction(props) {
   const className = !props.endDate.getTime() <= time ? "fadeMeIn" : "fadeMeOut";
   return (
     <div className={className}>
-      <a href="https://elsevier.zoom.us/j/5072606808?pwd=Y1QvRWxUQWNzZW1sSFRvME04dzdzQT09">
-        Join for your first instruction!
-      </a>
+      <p> Get ready to Rock!!</p> <p> Be ready to leave by 9:00 PM </p>
+      <Countdown endDate={endDate} />
+      <a href="https://youtu.be/B9mv3NmKPsg">https://youtu.be/B9mv3NmKPsg</a>
     </div>
   );
 }
 
-export default Instruction;
+export default Concert;

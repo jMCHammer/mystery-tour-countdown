@@ -3,7 +3,7 @@ import React, { useContext, useState } from "react";
 import UserContext from "./UserContext";
 import useInterval from "./interval.js";
 
-function Instruction(props) {
+function Wait(props) {
   const [time, setTime] = useState(new Date().getTime());
   const [delay, setDelay] = useState(1000);
   const user = useContext(UserContext);
@@ -22,13 +22,7 @@ function Instruction(props) {
     return null;
   }
   const className = !props.endDate.getTime() <= time ? "fadeMeIn" : "fadeMeOut";
-  return (
-    <div className={className}>
-      <a href="https://elsevier.zoom.us/j/5072606808?pwd=Y1QvRWxUQWNzZW1sSFRvME04dzdzQT09">
-        Join for your first instruction!
-      </a>
-    </div>
-  );
+  return <div className={className}>Please Await Further Instructions</div>;
 }
 
-export default Instruction;
+export default Wait;

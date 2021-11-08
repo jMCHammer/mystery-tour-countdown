@@ -5,6 +5,16 @@ var nodeEnv = process.env.NODE_ENV;
 function degreesToRadians(degrees) {
   return (degrees * Math.PI) / 180;
 }
+function relativeDistance(position1, position2) {
+  var meters = distanceBetweenPositions(position1, position2);
+  return meters > 100
+    ? "far"
+    : meters > 30
+    ? "getting close"
+    : meters > 5
+    ? "very close"
+    : "there! You're at ";
+}
 
 function distanceBetweenPositions(position1, position2) {
   var lat1 = position1[0];
@@ -40,29 +50,24 @@ async function fetchData(setter) {
     .catch(() => console.log("Couldn't find locations"));
 }
 
-function calculatePosition(showPosition) {
+function calculatePosition(f) {
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
+    navigator.geolocation.watchPosition(f);
   } else {
-    console.log("Geolocation is not supported by this browser.");
+    alert("Geolocation is not supported by this browser.");
   }
 }
 
-function Proximity() {
-  //todo: get a location from the server
-  // this is roughly Dilworth Park
-  const [location, setLocation] = useState([39.95306, -75.164527]);
-  //todo fix the location problem, nonstop location fetches
-  //fetchData(setLocation);
-  const [position, setPosition] = useState([null, null]);
+function Proximity(props) {
+  const [position, setPosition] = useState([39.921916, -75.075628]);
 
-  function showPosition(position) {
-    setPosition([position.coords.latitude, position.coords.longitude]);
+  function showPosition(p) {
+    setPosition([p.coords.latitude, p.coords.longitude]);
   }
 
   calculatePosition(showPosition);
-  var distanceInMeters = distanceBetweenPositions(position, location);
-  return <div>You are {distanceInMeters} meters from your destination.</div>;
+  var meters = distanceBetweenPositions(position, props.location);
+  return <div>You are {meters} meters from your destination.</div>;
 }
 
 export default Proximity;
