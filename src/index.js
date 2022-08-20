@@ -35,10 +35,8 @@ function App() {
   const [user, setUser] = useState(null);
 
   return (
-    <div className="App">
-      <div className="App-header">
-        <Player />
-      </div>
+    <div>
+      Get Pumped for Grandpa Wisdom's Magical Mystery Tour!
     </div>
   );
 }
