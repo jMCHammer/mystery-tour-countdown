@@ -2,7 +2,17 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # Mystery Tour Countdown / Scavenger Hunt
 
+## Background
 This ReactJS app is made up of a series of pages that were built to simulate a Scavenger Hunt or Puzzle Hunt during a trip with friends to Poughkeepsie, NY. The Hunt became active when the weekend started and it is now closed. Though the URL used for the website is still active https://mysterytour.dev 
+
+## Technology
+The project was written in ReactJS and was hosted on Heroku. I was originally going to store the puzzles, user data, and progress in a Heroku hosted postgres instance, but I went with the simpliest approach which was putting all the puzzles in the React app.
+
+## The Goal
+The intention of the project was to build up energy and excitement for a trip we had planned as friends. The website started with a countdown. Once the countdown ended, the hunt started. The group dove into a series of puzzles that took us through Poughkeepsie. Considering all the desinations were chosen before I had ever even visited the city, it went surprisingly well!
+
+## Future Improvements
+The app doesn't store the progress through the puzzles of the user. I would like to add user profiles and maybe store the puzzles and progress in a database, or as a short-term solution, potentially storing progress in the user's browser cache.
 
 ## Available Scripts
 
